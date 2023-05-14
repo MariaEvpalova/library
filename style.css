@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0 3vh;
+    --lines: 1px solid #000000;
+    --books-gap: 32px;
+}
+
+header {
+    display: flex;
+    border-bottom: var(--lines);
+    gap: 12px;
+}
+
+header button {
+    position: fixed;
+    bottom: var(--books-gap);
+    right: var(--books-gap);
+}
+
+header button img {
+    height: 4rem;
+}
+
+h1 {
+    font-weight: 400;
+}
+
+h2 {
+    font-weight: 300;
+}
+
+.pages {
+    font-weight: 200;
+}
+
+#main-section {
+    display: grid;
+    gap: var(--books-gap);
+    padding-top: var(--books-gap);
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+.book {
+    border: var(--lines);
+    padding: var(--books-gap);
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.book h1, .book h2 {
+    margin: 0;
+}
+
+.book .text {
+    display: flex;
+    flex-direction: column;
+}
+
+.book .text div {
+    align-self: flex-end;
+}
+
+.book button, header button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    background: none;
+}
+
+.book .buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.book img {
+    height: 2.2rem;
+}
+
+.book button:first-child img {
+    height: 3rem;
+}
