@@ -5,15 +5,7 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-Book.prototype.info = function() {
-    if (this.read)
-        return `${this.title} by ${this.author}, ${this.pages} pages, read`;
-    return `${this.title} by ${this.author}, ${this.pages} pages, not read yet`;
-}
-
 let myLibrary = [];
-
-const mainSection = document.getElementById('main-section');
 
 function changeReadButton(event) {
     if (event.target.src.includes('undone'))
@@ -50,7 +42,7 @@ function displaySingleBook(book) {
     const readIcon = readButton.querySelector('img');
     readIcon.src = book.read ? 'icons/done.svg' : 'icons/undone.svg';
 
-    mainSection.appendChild(container);
+    document.getElementById('main-section').appendChild(containerChildren[0]);
 
     readButton.addEventListener('click', changeReadButton);
     deleteButton.addEventListener('click', deleteBookCard);
@@ -60,9 +52,6 @@ function addBook(book) {
     myLibrary.push(book);
     displaySingleBook(book)
 }
-
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
-console.log(theHobbit.info());
 
 const showFormButton = document.querySelector('header button');
 const formContainer = document.getElementById('form-container');
@@ -88,4 +77,10 @@ form.addEventListener('submit', function(event) {
 
     form.reset();
     formContainer.classList.toggle('visible');
+    showFormButton.classList.toggle('rotated');
 });
+
+addBook(new Book('The Hobbit', 'J.R.R. Tolkien', 295, false));
+addBook(new Book('Harry Potter and the Philosopher\'s Stone', 'J.K. Rowling', 352, true))
+addBook(new Book('Dandelion Wine', 'Ray Bradbury ', 256, false))
+addBook(new Book('Klara and the Sun', 'Kazuo Ishiguro', 320, false))
