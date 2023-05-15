@@ -13,17 +13,22 @@ body {
 header {
     display: flex;
     border-bottom: var(--lines);
+    justify-content: space-between;
+    z-index: 999;
+    position: relative;
+}
+
+header div {
+    display: flex;
     gap: 12px;
 }
 
 header button {
-    position: fixed;
-    bottom: var(--books-gap);
-    right: var(--books-gap);
+    transition: transform 0.3s ease-in-out;
 }
 
-header button img {
-    height: 4rem;
+button.rotated {
+    transform: rotate(45deg);
 }
 
 h1 {
@@ -85,4 +90,65 @@ h2 {
 
 .book button:first-child img {
     height: 3rem;
+}
+
+#form-container {
+    position: fixed;
+    top: 0;
+    right: -400px; /* Start offscreen */
+    width: 400px;
+    height: 100%;
+    transition: right 0.3s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(7px);
+}
+
+#form-container.visible {
+    right: 0; /* Slide in from the right */
+}
+
+.form-control {
+    display: flex;
+    gap: 8px;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+}
+
+  input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+input[type="checkbox"]::before {
+    background-color: CanvasText;
+}
+
+form button {
+    border: var(--lines);
+    background-color: #ffffff;
+    padding: 6px;
 }
