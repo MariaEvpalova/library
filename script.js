@@ -22,6 +22,11 @@ function changeReadButton(event) {
         event.target.src = event.target.src.replace('done', 'undone')
 }
 
+function deleteBookCard(event) {
+    console.log(event.target);
+    event.target.parentNode.parentNode.parentNode.parentNode.remove();
+}
+
 function displaySingleBook(book) {
     const htmlCode = `
     <div class="book">
@@ -40,14 +45,15 @@ function displaySingleBook(book) {
     container.innerHTML = htmlCode;
 
     const containerChildren = container.children;
-    const readButton = containerChildren[0].querySelector('button');
+    const readButton = containerChildren[0].querySelectorAll('button')[0];
+    const deleteButton = containerChildren[0].querySelectorAll('button')[1];
     const readIcon = readButton.querySelector('img');
     readIcon.src = book.read ? 'icons/done.svg' : 'icons/undone.svg';
 
     mainSection.appendChild(container);
 
     readButton.addEventListener('click', changeReadButton);
-
+    deleteButton.addEventListener('click', deleteBookCard);
 }
 
 function addBook(book) {
