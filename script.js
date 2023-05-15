@@ -16,7 +16,7 @@ function changeReadButton(event) {
 
 function deleteBookCard(event) {
     console.log(event.target);
-    event.target.parentNode.parentNode.parentNode.parentNode.remove();
+    event.target.parentNode.parentNode.parentNode.remove();
 }
 
 function displaySingleBook(book) {
