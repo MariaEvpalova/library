@@ -10,13 +10,14 @@ let myLibrary = [];
 function changeReadButton(event) {
     if (event.target.src.includes('undone'))
         event.target.src = event.target.src.replace('undone', 'done');
-    else
-        event.target.src = event.target.src.replace('done', 'undone')
+    else event.target.src = event.target.src.replace('done', 'undone');
 }
 
 function deleteBookCard(event) {
-    console.log(event.target);
-    event.target.parentNode.parentNode.parentNode.remove();
+    const deletedCard = event.target.parentNode.parentNode.parentNode;
+    const deletedHeader = deletedCard.querySelector('h1').innerText;
+    myLibrary = myLibrary.filter((obj) => obj.title !== deletedHeader);
+    deletedCard.remove();
 }
 
 function displaySingleBook(book) {
@@ -50,22 +51,22 @@ function displaySingleBook(book) {
 
 function addBook(book) {
     myLibrary.push(book);
-    displaySingleBook(book)
+    displaySingleBook(book);
 }
 
 const showFormButton = document.querySelector('header button');
 const formContainer = document.getElementById('form-container');
 
-showFormButton.addEventListener('click', function() {
+showFormButton.addEventListener('click', function () {
     formContainer.classList.toggle('visible');
 });
 
-showFormButton.addEventListener('click', function() {
+showFormButton.addEventListener('click', function () {
     showFormButton.classList.toggle('rotated');
 });
 
 const form = formContainer.querySelector('form');
-form.addEventListener('submit', function(event) {
+form.addEventListener('submit', function (event) {
     event.preventDefault();
 
     const title = document.getElementById('title').value;
@@ -81,6 +82,13 @@ form.addEventListener('submit', function(event) {
 });
 
 addBook(new Book('The Hobbit', 'J.R.R. Tolkien', 295, false));
-addBook(new Book('Harry Potter and the Philosopher\'s Stone', 'J.K. Rowling', 352, true))
-addBook(new Book('Dandelion Wine', 'Ray Bradbury ', 256, false))
-addBook(new Book('Klara and the Sun', 'Kazuo Ishiguro', 320, false))
+addBook(
+    new Book(
+        "Harry Potter and the Philosopher's Stone",
+        'J.K. Rowling',
+        352,
+        true
+    )
+);
+addBook(new Book('Dandelion Wine', 'Ray Bradbury ', 256, false));
+addBook(new Book('Klara and the Sun', 'Kazuo Ishiguro', 320, false));

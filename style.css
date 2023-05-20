@@ -5,10 +5,10 @@
 }
 
 body {
-    margin: 0 3vh;
     --lines: 1px solid #000000;
-    --books-gap: 32px;
+    --books-gap: 2vw;
     --lines-border-radius: 24px;
+    margin: 0 var(--books-gap);
 }
 
 header {
@@ -48,7 +48,7 @@ h2 {
     display: grid;
     gap: var(--books-gap);
     padding: var(--books-gap) 0;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
     align-items: stretch;
 }
 
@@ -59,6 +59,7 @@ h2 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    min-width: min-content;
 }
 
 .book h1, .book h2 {
@@ -72,6 +73,7 @@ h2 {
 
 .book .text div {
     align-self: flex-end;
+    margin-top: 12px;
 }
 
 .book button, header button {
